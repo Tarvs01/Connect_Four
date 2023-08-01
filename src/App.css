@@ -1,0 +1,176 @@
+@font-face {
+  font-family: poppins;
+  src: url(../src/fonts/Poppins-Medium.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: blueviolet;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  flex-direction: column;
+}
+
+.connect-four {
+  font-weight: 900;
+  font-size: 40px;
+  text-rendering: optimizeLegibility;
+  /* Put text outline here later. Use JS */
+}
+
+.icon-cont {
+  display: grid;
+  grid-template-columns: 20px 20px;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgb(43, 42, 42);
+  border-radius: 50%;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.redf {
+  color: red;
+}
+
+.yellowf {
+  color: yellow;
+}
+
+.greenf {
+  color: green;
+}
+
+.bluef {
+  color: blue;
+}
+
+.menu-items-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.menu-item {
+  padding: 10px 0;
+  border: 2px solid black;
+  width: 300px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 10px;
+  font-family: poppins, Arial, Helvetica, sans-serif;
+  box-shadow: 1px 2px 2px black;
+  transition: all 0.3s linear;
+}
+
+.menu-item:hover {
+  box-shadow: none;
+  background-color: white;
+}
+
+.redb {
+  background-color: rgb(245, 47, 47);
+}
+
+.yellowb {
+  background-color: rgb(238, 238, 57);
+}
+
+.blueb {
+  background-color: rgb(61, 61, 248);
+}
+
+.rules-container {
+  display: flex;
+  justify-content: center;
+}
+
+.rules-name {
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.rules-cont {
+  margin-top: 30px;
+  border: 2px solid black;
+  background-color: white;
+  width: 95vw;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.rules-cont li {
+  list-style-position: outside;
+  font-family: poppins;
+}
+
+.board {
+  border: 2px solid black;
+  background-color: blue;
+  width: 95vw;
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  border-radius: 25px;
+  box-shadow: 1px 2px 2px black;
+}
+
+.board-column {
+  padding: 10px 0;
+  transition: all 0.2s linear;
+  border-radius: 25px;
+}
+
+.board-column:hover {
+  background-color: gray;
+}
+
+.board-cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-color: blueviolet;
+  box-shadow: 1px 2px 2px black inset;
+  position: relative;
+}
+
+.winnerRect {
+  border: 2px solid green;
+  height: 240px;
+  width: 60px;
+  position: absolute;
+  left: 50%;
+  transform-origin: top center;
+  transform: rotate(90deg);
+  top: 50%;
+  border-radius: 25px;
+}
