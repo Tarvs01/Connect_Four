@@ -6,7 +6,7 @@ const AppContext = createContext<ContextItems | null>(null);
 function AppProvider({ children }: any) {
   function play(player: number, column: number, board: number[][]) {
     if (board[0][column] !== 0) {
-      return [false];
+      return false;
     } else {
       for (let i = 6; i > -1; i--) {
         if (board[i][column] === 0) {
@@ -15,7 +15,7 @@ function AppProvider({ children }: any) {
         }
       }
     }
-    return [true, board];
+    return true;
   }
   return (
     <AppContext.Provider

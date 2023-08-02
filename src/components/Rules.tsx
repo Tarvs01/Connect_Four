@@ -1,6 +1,22 @@
 import React from "react";
+import { getNextOptimalMove } from "../helpers/nextBestMove";
 
 function Rules() {
+  console.log(
+    getNextOptimalMove(
+      [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [2, 0, 0, 0, 0, 0, 0],
+        [2, 0, 1, 1, 0, 0, 0],
+      ],
+      2
+    )
+  );
+
   return (
     <main className="rules-container">
       <div className="rules-cont">

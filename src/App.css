@@ -149,7 +149,7 @@ nav {
 }
 
 .board-column:hover {
-  background-color: gray;
+  background-color: rgb(218, 217, 217);
 }
 
 .board-cell {
@@ -163,14 +163,14 @@ nav {
   position: relative;
 }
 
-.winnerRect {
-  border: 2px solid green;
-  height: 240px;
-  width: 60px;
+.bi-x-lg {
   position: absolute;
-  left: 50%;
-  transform-origin: top center;
-  transform: rotate(90deg);
   top: 50%;
-  border-radius: 25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 40%;
+  fill: black;
+  stroke-dashoffset: 2;
+  stroke-width: 5;
 }
