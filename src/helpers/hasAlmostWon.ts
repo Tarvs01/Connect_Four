@@ -45,6 +45,68 @@ export function hasAlmostWon(board: number[][], player: number) : HasAlmostWon {
                     }
                 }
             }
+            else {
+                count = 0; //This line is pretty useless cause it searches from top to bottom, so if the top 3 are not the same piece, then there is obviously no immediate winning chance on that column
+            }
+        }
+    }
+
+    //positive diagonal checks
+    for (let i = 1; i < COLS - 3; i++){
+        let count = 0;
+        for (let j = 0; i + j < COLS; j++){
+            if (board[j][i + j] === player) {
+                count++;
+                if (count == 2) {
+                    if (i + j + 2 < COLS && board[j + 1][i + j + 1] === 0 && board[j + 2][i + j + 2] === player) {
+                        return { hasWinningPosition: true, column: i + j + 1 };
+                    }
+                    if (i + j - 3 >= i && board[j - 2][i + j - 2] === 0 && board[j - 3][i + j - 3] === player) {
+                        return { hasWinningPosition: true, column: i + j - 2 };
+                    }
+                }
+
+                if (count === 3) {
+                    if (i + j + 1 < COLS && board[j + 1][i + j + 1] === 0) {
+                        return { hasWinningPosition: true, column: i + j + 1 };
+                    }
+                    if (i + j - 3 >= i && board[j - 3][i + j - 3] === 0) {
+                        return { hasWinningPosition: true, column: i + j - 3 };
+                    }
+                }
+            }
+            else {
+                count = 0;
+            }
+        }
+    }
+
+    for (let i = 0; i < ROWS - 3; i++){
+        let count = 0;
+        for (let j = 0; i + j < ROWS; j++){
+            if (board[i + j][j] === player) {
+                count++;
+                if (count === 2) {
+                    if (i + j + 2 < ROWS && board[i + j + 1][j + 1] === 0 && board[i + j + 2][j + 2] === player) {
+                        return { hasWinningPosition: true, column: j + 1 };
+                    }
+                    if (i + j - 3 >= i && board[i + j - 2][j - 2] === 0 && board[i + j - 3][j - 3] === player) {
+                        return { hasWinningPosition: true, column: j - 2 };
+                    }
+                }
+
+                if (count === 3) {
+                    if (i + j + 1 < ROWS && board[i + j + 1][j + 1] === 0) {
+                        return { hasWinningPosition: true, column: j + 1 };
+                    }
+                    if (i + j - 3 >= i && board[i + j - 3][j - 3] === 0) {
+                        return { hasWinningPosition: true, column: j - 3 };
+                    }
+                }
+            }
+            else {
+                count = 0;
+            }
         }
     }
 

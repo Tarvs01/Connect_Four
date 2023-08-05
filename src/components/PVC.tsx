@@ -34,8 +34,8 @@ function PVC() {
 
   function columnWasClicked(column: number) {
     if (playerNumber.current === computerNumber) {
-      let aiWinChance = hasAlmostWon(childBoard, computerNumber);
-      let playerWinChance = hasAlmostWon(childBoard, (computerNumber % 2) + 1);
+      let aiWinChance : HasAlmostWon = hasAlmostWon(childBoard, computerNumber);
+      let playerWinChance : HasAlmostWon = hasAlmostWon(childBoard, (computerNumber % 2) + 1);
       if (
         aiWinChance.hasWinningPosition ||
         playerWinChance.hasWinningPosition
