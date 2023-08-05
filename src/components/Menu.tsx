@@ -5,7 +5,9 @@ function Menu() {
   return (
     <div>
       <div className="menu-items-cont">
-        <div className="menu-item redb">Play VS Computer</div>
+        <div className="menu-item redb">
+          <Link to={"/PVC"}>Play VS Computer</Link>
+        </div>
         <div className="menu-item yellowb">
           <Link to={"/PVP"}>Play VS Human</Link>
         </div>

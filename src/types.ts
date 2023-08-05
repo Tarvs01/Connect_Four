@@ -33,5 +33,11 @@ export interface BoardDetails{
 }
 
 export interface BoardRef{
-    columnPlay: (column : number) => void;
+    columnPlay: (column: number) => void;
+    boardReset: () => void
+}
+
+export interface HasAlmostWon{
+    hasWinningPosition: boolean;
+    column: number
 }

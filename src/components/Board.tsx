@@ -1,6 +1,5 @@
 import React, {
   useContext,
-  useRef,
   useState,
   useEffect,
   forwardRef,
@@ -10,10 +9,27 @@ import { AppContext } from "./AppProvider";
 import Column from "./Column";
 import { checkWinner } from "../helpers/checkWinner";
 import { CheckWinnerReturn } from "../types";
-import { getNextOptimalMove } from "../helpers/nextBestMove";
 import { BoardDetails, BoardRef } from "../types";
 
 const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
+  const [board, setBoard] = useState([
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+  ]);
+
+  let {
+    hasPlayerWon,
+    setHasPlayerWon,
+    columnWasClicked,
+    playerNumber,
+    setChildBoard,
+  } = props;
+
   useImperativeHandle(ref, () => ({
     columnPlay(column: number) {
       if (hasPlayerWon) {
@@ -47,24 +63,21 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
         }, winnerStatus.row * 100);
       }
     },
-  }));
+    boardReset() {
+      setBoard([
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+      ]);
 
-  let {
-    hasPlayerWon,
-    setHasPlayerWon,
-    columnWasClicked,
-    playerNumber,
-    setChildBoard,
-  } = props;
-  const [board, setBoard] = useState([
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-  ]);
+      setHasPlayerWon(false);
+      playerNumber.current = 1;
+    },
+  }));
 
   useEffect(() => {
     setChildBoard(board);

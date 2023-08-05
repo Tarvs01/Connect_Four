@@ -30,6 +30,10 @@ nav {
   font-size: 40px;
   text-rendering: optimizeLegibility;
   /* Put text outline here later. Use JS */
+  /* -webkit-text-stroke: 3px black; */
+  text-shadow: -2px 0px 0px black, 2px 0px 0px black, 0px -2px 0px black, 0px 2px 0px black;
+  letter-spacing: 3px;
+  /* Using text-stroke gives a better border but only works on webkit suported browsers. Using text shadow works on all browsers but doesn't yield results as good as text-stroke */
 }
 
 .icon-cont {
@@ -76,7 +80,6 @@ nav {
 }
 
 .menu-item {
-  padding: 10px 0;
   border: 2px solid black;
   width: 300px;
   text-align: center;
@@ -85,6 +88,11 @@ nav {
   font-family: poppins, Arial, Helvetica, sans-serif;
   box-shadow: 1px 2px 2px black;
   transition: all 0.3s linear;
+}
+
+.menu-item a{
+  padding: 10px 0;
+  display: block;
 }
 
 .menu-item:hover {
@@ -173,4 +181,26 @@ nav {
   fill: black;
   stroke-dashoffset: 2;
   stroke-width: 5;
+}
+
+.controls-cont{
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls-cont button{
+  padding: 8px 20px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(169, 86, 247);
+  color: white;
+  font-family: poppins;
+  transition: all 0.2s linear;
+}
+
+.controls-cont button:hover{
+  background-color: rgb(136, 63, 204);
 }

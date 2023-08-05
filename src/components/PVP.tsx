@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Board from "./Board";
 import PlayerScore from "./PlayerScore";
 import { BoardRef } from "../types";
+import { Link } from "react-router-dom";
 
 function PVP() {
   const [hasPlayerWon, setHasPlayerWon] = useState(false);
@@ -31,6 +32,14 @@ function PVP() {
   }
   return (
     <div>
+      <div className="controls-cont">
+        <Link to="/">
+          <button className="to-menu">MENU</button>
+        </Link>
+        <button className="reset-board" onClick={childRef.current?.boardReset}>
+          RESET
+        </button>
+      </div>
       <PlayerScore />
       <Board
         /* hasPlayerWon={hasPlayerWon}
