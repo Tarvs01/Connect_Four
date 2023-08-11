@@ -5,6 +5,7 @@ import { BoardRef } from "../types";
 import { Link } from "react-router-dom";
 import { HasAlmostWon } from "../types";
 import { hasAlmostWon } from "../helpers/hasAlmostWon";
+import findNextBestMove from "../helpers/finalBestMove";
 
 function PVC() {
   const [hasPlayerWon, setHasPlayerWon] = useState(false);
@@ -17,15 +18,20 @@ function PVC() {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
   ]);
+  const [gameScore, setGameScore] = useState(100000);
+  let playerOneScore = useRef<number>(0);
+  let playerTwoScore = useRef<number>(0);
   let computerNumber = 2;
   const playerNumber = useRef<number>(1);
   const childRef = useRef<BoardRef>(null);
+
   let boardObject = {
     hasPlayerWon,
     setHasPlayerWon,
     playerNumber,
     columnWasClicked,
     setChildBoard,
+    playerHasWon,
   };
 
   function canPlayColumn(col: number): boolean {
@@ -34,8 +40,11 @@ function PVC() {
 
   function columnWasClicked(column: number) {
     if (playerNumber.current === computerNumber) {
-      let aiWinChance : HasAlmostWon = hasAlmostWon(childBoard, computerNumber);
-      let playerWinChance : HasAlmostWon = hasAlmostWon(childBoard, (computerNumber % 2) + 1);
+      /* let aiWinChance: HasAlmostWon = hasAlmostWon(childBoard, computerNumber);
+      let playerWinChance: HasAlmostWon = hasAlmostWon(
+        childBoard,
+        (computerNumber % 2) + 1
+      );
       if (
         aiWinChance.hasWinningPosition ||
         playerWinChance.hasWinningPosition
@@ -51,14 +60,28 @@ function PVC() {
           randColumn = Math.floor(Math.random() * 7);
         }
         childRef.current?.columnPlay(randColumn);
+      } */
+      let nbmove = findNextBestMove(childBoard, gameScore, 6);
+      console.log(nbmove);
+      if (nbmove[0] !== null && nbmove[1]) {
+        setGameScore(nbmove[1]);
+        childRef.current?.columnPlay(nbmove[0]);
       }
     } else {
       childRef.current?.columnPlay(column);
       setTimeout(() => columnWasClicked(0), 500);
     }
   }
+
+  function playerHasWon(player: number) {
+    if (player === 1) {
+      playerOneScore.current += 1;
+    } else {
+      playerTwoScore.current += 1;
+    }
+  }
   return (
-    <div>
+    <div className="playing-field">
       <div className="controls-cont">
         <Link to="/">
           <button className="to-menu">MENU</button>
@@ -67,7 +90,7 @@ function PVC() {
           RESET
         </button>
       </div>
-      <PlayerScore />
+      <PlayerScore score={playerOneScore.current} playerNumber={"One"} />
       <Board
         /* hasPlayerWon={hasPlayerWon}
         setHasPlayerWon={setHasPlayerWon}
@@ -76,7 +99,7 @@ function PVC() {
         {...boardObject}
         ref={childRef}
       />
-      <PlayerScore />
+      <PlayerScore score={playerTwoScore.current} playerNumber={"Two"} />
     </div>
   );
 }

@@ -21,8 +21,10 @@ a {
 nav {
   display: flex;
   align-items: center;
-  margin-top: 30px;
-  flex-direction: column;
+  margin: 20px 10px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .connect-four {
@@ -34,6 +36,14 @@ nav {
   text-shadow: -2px 0px 0px black, 2px 0px 0px black, 0px -2px 0px black, 0px 2px 0px black;
   letter-spacing: 3px;
   /* Using text-stroke gives a better border but only works on webkit suported browsers. Using text shadow works on all browsers but doesn't yield results as good as text-stroke */
+  margin-left: 10px;
+  text-align: center;
+}
+
+@media screen and (max-width: 380px) {
+  .connect-four{
+    font-size: 30px !important;
+  }
 }
 
 .icon-cont {
@@ -44,7 +54,7 @@ nav {
 .icon {
   width: 15px;
   height: 15px;
-  border: 2px solid rgb(43, 42, 42);
+  border: 2px solid black;
   border-radius: 50%;
 }
 
@@ -90,7 +100,7 @@ nav {
   transition: all 0.3s linear;
 }
 
-.menu-item a{
+.menu-item a {
   padding: 10px 0;
   display: block;
 }
@@ -150,6 +160,19 @@ nav {
   box-shadow: 1px 2px 2px black;
 }
 
+@media screen and (max-width: 500px) {
+  .board{
+    border-radius: 20px !important;
+    padding: 0 5px !important;
+  }
+}
+
+@media screen and(max-width: 220px) {
+  .board{
+    border-radius: 10px !important;
+  }
+}
+
 .board-column {
   padding: 10px 0;
   transition: all 0.2s linear;
@@ -171,6 +194,13 @@ nav {
   position: relative;
 }
 
+@media screen and (max-width: 430px) {
+  .board-cell {
+    width: calc(95vw / 8) !important;
+    height: calc(95vw / 8) !important;
+  }
+}
+
 .bi-x-lg {
   position: absolute;
   top: 50%;
@@ -183,7 +213,7 @@ nav {
   stroke-width: 5;
 }
 
-.controls-cont{
+.controls-cont {
   width: 90vw;
   margin: 0 auto;
   max-width: 400px;
@@ -191,7 +221,7 @@ nav {
   justify-content: space-between;
 }
 
-.controls-cont button{
+.controls-cont button {
   padding: 8px 20px;
   border-radius: 15px;
   border: none;
@@ -201,6 +231,6 @@ nav {
   transition: all 0.2s linear;
 }
 
-.controls-cont button:hover{
+.controls-cont button:hover {
   background-color: rgb(136, 63, 204);
 }

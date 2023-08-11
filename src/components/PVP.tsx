@@ -15,6 +15,8 @@ function PVP() {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
   ]);
+  let playerOneScore = useRef<number>(0);
+  let playerTwoScore = useRef<number>(0);
   const playerNumber = useRef<number>(1);
   const childRef = useRef<BoardRef>(null);
   let boardObject = {
@@ -23,12 +25,21 @@ function PVP() {
     playerNumber,
     columnWasClicked,
     setChildBoard,
+    playerHasWon,
   };
 
   function columnWasClicked(column: number) {
     childRef.current?.columnPlay(column);
 
     setChildBoard(childBoard); //This line is pretty useless in the PVP component. I just used it to remove the warning for not using childBoard. The use of childBoard comes into play in the PVC component
+  }
+
+  function playerHasWon(player: number) {
+    if (player === 1) {
+      playerOneScore.current += 1;
+    } else {
+      playerTwoScore.current += 1;
+    }
   }
   return (
     <div>
@@ -40,7 +51,7 @@ function PVP() {
           RESET
         </button>
       </div>
-      <PlayerScore />
+      <PlayerScore score={playerOneScore.current} playerNumber={"One"} />
       <Board
         /* hasPlayerWon={hasPlayerWon}
         setHasPlayerWon={setHasPlayerWon}
@@ -49,7 +60,7 @@ function PVP() {
         {...boardObject}
         ref={childRef}
       />
-      <PlayerScore />
+      <PlayerScore score={playerTwoScore.current} playerNumber={"Two"} />
     </div>
   );
 }

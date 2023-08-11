@@ -28,6 +28,7 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
     columnWasClicked,
     playerNumber,
     setChildBoard,
+    playerHasWon,
   } = props;
 
   useImperativeHandle(ref, () => ({
@@ -56,6 +57,7 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
       if (winnerStatus.hasWinner) {
         console.log("There is a winner");
         console.log(winnerStatus);
+        playerHasWon((playerNumber.current % 2) + 1);
         setHasPlayerWon(true);
         //draw winner
         setTimeout(() => {

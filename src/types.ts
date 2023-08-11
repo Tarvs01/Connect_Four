@@ -30,6 +30,7 @@ export interface BoardDetails{
     playerNumber: MutableRefObject<number>;
     columnWasClicked: (column: number) => void;
     setChildBoard: React.Dispatch<React.SetStateAction<number[][]>>;
+    playerHasWon : (player : number) => void
 }
 
 export interface BoardRef{
