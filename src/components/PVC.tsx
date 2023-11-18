@@ -95,14 +95,28 @@ function PVC() {
         let resp = await axios.get(
           `https://connect4.gamesolver.org/solve?pos=${plays.current}`
         );
-        let arrayPlays: number[] = resp.data.score;
-        let maxValue: number = arrayPlays.reduce(
+        let arrayPlaysOri: number[] = resp.data.score;
+        /* let maxValue: number = arrayPlays.reduce(
           (a, b) => Math.max(a, b),
           -Infinity
-        );
+        ); */
+
+        let arrayPlays = [...arrayPlaysOri];
+
         console.log(arrayPlays);
+        let maxValue: number = arrayPlays.sort((a,b) => a - b)[arrayPlays.length - 1];
+        console.log(arrayPlays);
+
+        if (maxValue >= 100) {
+          for (let i = arrayPlays.length - 1; i >= 0; i--){
+            if (arrayPlays[i] < 100) {
+              maxValue = arrayPlays[i];
+              break;
+            }
+          }
+        }
         
-        let maxPosition: number = arrayPlays.indexOf(maxValue);
+        let maxPosition: number = arrayPlaysOri.indexOf(maxValue);
         childRef.current?.columnPlay(maxPosition);
         updatePlays(maxPosition);
       }
