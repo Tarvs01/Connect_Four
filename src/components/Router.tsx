@@ -5,6 +5,7 @@ import Menu from "./Menu";
 import PVP from "./PVP";
 import Rules from "./Rules";
 import PVC from "./PVC";
+import DifficultySelection from "./DifficultySelection";
 
 function Router() {
   return (
@@ -12,9 +13,10 @@ function Router() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Menu />} />
-              <Route path="/PVP" element={<PVP />} />
+        <Route path="/PVP" element={<PVP />} />
         <Route path="/Rules" element={<Rules />} />
         <Route path="/PVC" element={<PVC />} />
+        <Route path="/difficulty-selection" element={<DifficultySelection />} />
       </Routes>
     </div>
   );

@@ -18,7 +18,7 @@ function Cell({ row, player, column }: CellDetails) {
       animate={{
         bottom: `0px`,
       }}
-      transition={{ duration: row * 0.1 }}
+      transition={{ duration: row * 0.08 }}
     ></motion.div>
   );
 }

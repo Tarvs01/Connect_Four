@@ -41,7 +41,7 @@ nav {
 }
 
 @media screen and (max-width: 380px) {
-  .connect-four{
+  .connect-four {
     font-size: 30px !important;
   }
 }
@@ -101,8 +101,13 @@ nav {
 }
 
 .menu-item a {
-  padding: 10px 0;
-  display: block;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item svg {
+  height: 30px;
 }
 
 .menu-item:hover {
@@ -161,14 +166,14 @@ nav {
 }
 
 @media screen and (max-width: 500px) {
-  .board{
+  .board {
     border-radius: 20px !important;
     padding: 0 5px !important;
   }
 }
 
 @media screen and(max-width: 220px) {
-  .board{
+  .board {
     border-radius: 10px !important;
   }
 }
@@ -187,7 +192,7 @@ nav {
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  margin: 0 auto 10px;
+  margin: 0 auto 25px;
   border-radius: 50%;
   background-color: blueviolet;
   box-shadow: 1px 2px 2px black inset;
@@ -233,4 +238,53 @@ nav {
 
 .controls-cont button:hover {
   background-color: rgb(136, 63, 204);
+}
+
+.difficulty-selection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.difficulty-selection h2 {
+  margin-bottom: 20px;
+}
+
+.difficulty-cont {
+  width: fit-content;
+}
+
+.easy {
+  background-color: rgb(36, 197, 36);
+}
+
+.hard {
+  background-color: rgb(252, 128, 83);
+}
+
+.very-hard {
+  background-color: red;
+}
+
+.ai-think-cont {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai-think-cont p {
+  background-color: white;
+  padding: 5px 10px;
+  font-family: poppins, sans-serif;
+  border-radius: 5px;
 }

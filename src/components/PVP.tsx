@@ -13,7 +13,6 @@ function PVP() {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
   ]);
   let playerOneScore = useRef<number>(0);
   let playerTwoScore = useRef<number>(0);

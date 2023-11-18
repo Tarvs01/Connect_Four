@@ -40,11 +40,6 @@ function Column({ board, columnPlay, columnNumber }: ColumnDetails) {
           <Cell row={5} column={columnNumber} player={board[5][columnNumber]} />
         )}
       </div>
-      <div className={`board-cell boardcell6${columnNumber}`}>
-        {board[6][columnNumber] !== 0 && (
-          <Cell row={6} column={columnNumber} player={board[6][columnNumber]} />
-        )}
-      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ function Menu() {
     <div>
       <div className="menu-items-cont">
         <div className="menu-item redb">
-          <Link to={"/PVC"}>Play VS Computer</Link>
+          <Link to={"/difficulty-selection"}>Play VS Computer</Link>
         </div>
         <div className="menu-item yellowb">
           <Link to={"/PVP"}>Play VS Human</Link>

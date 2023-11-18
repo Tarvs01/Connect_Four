@@ -19,7 +19,6 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
   ]);
 
   let {
@@ -46,7 +45,6 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
         newBoard[3] = board[3];
         newBoard[4] = board[4];
         newBoard[5] = board[5];
-        newBoard[6] = board[6];
         setBoard(newBoard);
       } else {
         console.log("column full");
@@ -67,7 +65,6 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
     },
     boardReset() {
       setBoard([
-        [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0],

@@ -1,7 +1,9 @@
 import { MutableRefObject } from "react";
 
 export interface ContextItems{
-    play: (player: number, column: number, board: number[][]) => boolean,
+    play: (player: number, column: number, board: number[][]) => boolean;
+    computerDifficulty: number;
+    setComputerDifficulty: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface CellDetails{
