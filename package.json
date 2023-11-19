@@ -1,5 +1,5 @@
 {
-  "name": "learning",
+  "name": "Connect Four",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
