@@ -86,37 +86,30 @@ const Board = forwardRef<BoardRef, BoardDetails>((props, ref) => {
   let player = playerNumber.current;
 
   function drawWinner(winner: CheckWinnerReturn) {
+    let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>cancel android app aplication phone</title><g id="cancel_android_app_aplication_phone" data-name="cancel android app aplication phone"><path d="M22.36,11.05,21,9.64a2,2,0,0,0-2.83,0L16,11.76,13.88,9.64a2,2,0,0,0-2.83,0L9.64,11.05a2,2,0,0,0,0,2.83L11.76,16,9.64,18.12a2,2,0,0,0,0,2.83l1.41,1.41a2,2,0,0,0,2.83,0L16,20.24l2.12,2.12a2,2,0,0,0,2.83,0L22.36,21a2,2,0,0,0,0-2.83L20.24,16l2.12-2.12A2,2,0,0,0,22.36,11.05Zm-4.24,4.24a1,1,0,0,0,0,1.42L21,19.54,19.54,21l-2.83-2.83a1,1,0,0,0-1.42,0L12.46,21l-1.41-1.41,2.83-2.83a1,1,0,0,0,0-1.42l-2.83-2.83,1.41-1.41,2.83,2.83a1,1,0,0,0,1.42,0l2.83-2.83L21,12.46Z"/></g></svg>`;
     if (winner.direction === "horizontal") {
       for (let i = 0; i < 4; i++) {
         document.querySelector(
           `.cell${winner.row}${winner.column - i}`
-        )!.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0   16   16" stroke-width="4">
-          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-          </svg>`;
+        )!.innerHTML = svg;
       }
     } else if (winner.direction === "vertical") {
       for (let i = 0; i < 4; i++) {
         document.querySelector(
           `.cell${winner.row - i}${winner.column}`
-        )!.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0   16   16" stroke-width="4">
-          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-          </svg>`;
+        )!.innerHTML = svg;
       }
     } else if (winner.direction === "diagonalNegative") {
       for (let i = 0; i < 4; i++) {
         document.querySelector(
           `.cell${winner.row + i}${winner.column - i}`
-        )!.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0   16   16" stroke-width="4">
-          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-          </svg>`;
+        )!.innerHTML = svg;
       }
     } else {
       for (let i = 0; i < 4; i++) {
         document.querySelector(
           `.cell${winner.row - i}${winner.column - i}`
-        )!.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0   16   16" stroke-width="4">
-          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-          </svg>`;
+        )!.innerHTML = svg;
       }
     }
   }

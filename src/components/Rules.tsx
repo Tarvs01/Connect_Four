@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Rules() {
   return (
@@ -14,10 +15,13 @@ function Rules() {
             There are no double turns, each player has a turn before the other
             player.
           </li>
-          <li>pa</li>
-          <li>na</li>
+          <li>There is no time limit between plays</li>
         </ol>
       </div>
+
+      <button>
+        <Link to={"/"}>Back</Link>
+      </button>
     </main>
   );
 }

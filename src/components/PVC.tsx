@@ -24,7 +24,7 @@ function PVC() {
   const [isAIThinking, setIsAIThinking] = useState(false);
   let playerOneScore = useRef<number>(0);
   let playerTwoScore = useRef<number>(0);
-  let computerNumber = 2;
+  const computerNumber = useRef<number>(2);
   const playerNumber = useRef<number>(1);
   const childRef = useRef<BoardRef>(null);
   let currentGame = useRef<Game>(new Game(context?.computerDifficulty));
@@ -56,12 +56,13 @@ function PVC() {
 
     if (
       hasPlayerWon ||
-      (playerNumber.current !== computerNumber && !canPlayColumn(column)) ||
+      (playerNumber.current !== computerNumber.current &&
+        !canPlayColumn(column)) ||
       checkWinner(childBoard).hasWinner
     ) {
       return;
     }
-    if (playerNumber.current === computerNumber) {
+    if (playerNumber.current === computerNumber.current) {
       /* let aiWinChance: HasAlmostWon = hasAlmostWon(childBoard, computerNumber);
       let playerWinChance: HasAlmostWon = hasAlmostWon(
         childBoard,
@@ -104,18 +105,20 @@ function PVC() {
         let arrayPlays = [...arrayPlaysOri];
 
         console.log(arrayPlays);
-        let maxValue: number = arrayPlays.sort((a,b) => a - b)[arrayPlays.length - 1];
+        let maxValue: number = arrayPlays.sort((a, b) => a - b)[
+          arrayPlays.length - 1
+        ];
         console.log(arrayPlays);
 
         if (maxValue >= 100) {
-          for (let i = arrayPlays.length - 1; i >= 0; i--){
+          for (let i = arrayPlays.length - 1; i >= 0; i--) {
             if (arrayPlays[i] < 100) {
               maxValue = arrayPlays[i];
               break;
             }
           }
         }
-        
+
         let maxPosition: number = arrayPlaysOri.indexOf(maxValue);
         childRef.current?.columnPlay(maxPosition);
         updatePlays(maxPosition);
@@ -149,27 +152,31 @@ function PVC() {
           onClick={() => {
             currentGame.current = new Game();
             childRef.current?.boardReset();
+            plays.current = "";
           }}
         >
-          RESET
+          NEW
         </button>
       </div>
-      <div style={{ position: "relative" }}>
+      <div className="play-area-cont">
         {isAIThinking && (
           <div className="ai-think-cont">
             <p>Computer is Thinking...</p>
           </div>
         )}
-        <PlayerScore score={playerOneScore.current} playerNumber={"One"} />
-        <Board
-          /* hasPlayerWon={hasPlayerWon}
-        setHasPlayerWon={setHasPlayerWon}
-        playerNumber={playerNumber}
-        columnWasClicked={columnWasClicked} */
-          {...boardObject}
-          ref={childRef}
+        <PlayerScore
+          score={playerOneScore.current}
+          playerNumber={"one"}
+          isHuman={computerNumber.current !== 1}
+          playerID=""
         />
-        <PlayerScore score={playerTwoScore.current} playerNumber={"Two"} />
+        <Board {...boardObject} ref={childRef} />
+        <PlayerScore
+          score={playerTwoScore.current}
+          playerNumber={"two"}
+          isHuman={computerNumber.current !== 2}
+          playerID=""
+        />
       </div>
     </div>
   );

@@ -47,19 +47,24 @@ function PVP() {
           <button className="to-menu">MENU</button>
         </Link>
         <button className="reset-board" onClick={childRef.current?.boardReset}>
-          RESET
+          NEW
         </button>
       </div>
-      <PlayerScore score={playerOneScore.current} playerNumber={"One"} />
-      <Board
-        /* hasPlayerWon={hasPlayerWon}
-        setHasPlayerWon={setHasPlayerWon}
-        playerNumber={playerNumber}
-        columnWasClicked={columnWasClicked} */
-        {...boardObject}
-        ref={childRef}
-      />
-      <PlayerScore score={playerTwoScore.current} playerNumber={"Two"} />
+      <div className="play-area-cont">
+        <PlayerScore
+          score={playerOneScore.current}
+          playerNumber={"one"}
+          isHuman={true}
+          playerID="One"
+        />
+        <Board {...boardObject} ref={childRef} />
+        <PlayerScore
+          score={playerTwoScore.current}
+          playerNumber={"two"}
+          isHuman={true}
+          playerID="Two"
+        />
+      </div>
     </div>
   );
 }

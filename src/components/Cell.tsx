@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 function Cell({ row, player, column }: CellDetails) {
   return (
     <motion.div
-      className={`cell${row}${column}`}
+      className={`cell cell${row}${column}`}
       style={{
         width: "100%",
         height: "100%",
